@@ -1,0 +1,34 @@
+{
+  "name": "test-fixtures2",
+  "version": "1.0.0",
+  "author": "Pablo de Leon Belloc <pablolb@gmail.com>",
+  "description": "A simple but flexible test fixtures loader",
+  "keywords": [
+    "test",
+    "fixtures"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "devDependencies": {
+    "chai": "^1.9.0",
+    "mocha": "^1.17.1"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1"
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pablolb/node-test-fixtures2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pablolb/node-test-fixtures2/issues"
+  },
+  "homepage": "https://github.com/pablolb/node-test-fixtures2"
+}
