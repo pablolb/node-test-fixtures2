@@ -1,6 +1,6 @@
 {
   "name": "test-fixtures2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Pablo de Leon Belloc <pablolb@gmail.com>",
   "description": "A simple but flexible test fixtures loader",
   "keywords": [
@@ -12,11 +12,11 @@
     "test": "make test"
   },
   "devDependencies": {
-    "chai": "^1.9.0",
-    "mocha": "^1.17.1"
+    "chai": "~1.9.0",
+    "mocha": "~1.17.1"
   },
   "dependencies": {
-    "lodash": "^2.4.1"
+    "lodash": "~2.4.1"
   },
   "directories": {
     "example": "examples",
