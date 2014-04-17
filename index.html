@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Node-test-fixtures2 by pablolb</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Node-test-fixtures2</h1>
+        <h2>Node test fixtures module</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/pablolb/node-test-fixtures2/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/pablolb/node-test-fixtures2/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/pablolb/node-test-fixtures2" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a name="test-fixtures" class="anchor" href="#test-fixtures"><span class="octicon octicon-link"></span></a>test-fixtures</h1>
+
+<p>A simple but flexible fixtures module for your tests.</p>
+
+<p>Inspired by the <a href="https://www.npmjs.org/package/node-fixtures">fixtures</a> and <a href="https://www.npmjs.org/package/config">config</a> modules,
+it features the following:</p>
+
+<ul>
+<li>
+<b>Environment aware</b>. Running the code in NODE_ENV=env will extend the fixtures with the ones in env subdirectory.</li>
+<li>
+<b>Always read fresh fixtures</b>. Every time you use fixtures.namedFixture, it reads them again. Simplifies tear-down.</li>
+<li>
+<b>Simple inheritance/extension of environments</b>.  Allows you to specify simple dependencies.</li>
+<li>
+<b>Both JSON and JavaScript formats</b>. Allows you to define fixtures as modules. Use as your own risk, and beware that if your modules are singletons, they will be cached by node (no more "always read fresh fixtures").</li>
+</ul><h2>
+<a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic usage</h2>
+
+<p>To load the fixture named validUser, from test/fixtures/validUser.json:</p>
+
+<pre><code>var Fixtures = require("test-fixtures");
+var fixtures = new Fixtures(__dirname + "/test/fixtures");
+
+console.log(fixtures.validUser);
+</code></pre>
+
+<p>Please look at the files in the <a href="examples">examples</a> directory.</p>
+
+<p>When used with the defaults:</p>
+
+<pre><code>node examples/basic.js
+{ email: 'john.doe@example.com', password: 'secret' }
+undefined
+</code></pre>
+
+<p>When used with qa environment:</p>
+
+<pre><code>NODE_ENV=qa node examples/basic.js 
+{ email: 'john.doe@example.com', password: 'QA-secret' }
+{ email: 'jane.doe@example.com', password: 'supersecret' }
+</code></pre>
+
+<p>When using the not-so-basic example in prod environment:</p>
+
+<pre><code>NODE_ENV=prod node examples/not_so_basic.js 
+{ email: 'john.prod@example.com', password: 'QA-secret' }
+{ email: 'jane.doe@example.com', password: 'supersecret' }
+</code></pre>
+
+<h2>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<p>You can pass the following options as a second argument in the constructor:</p>
+
+<ul>
+<li>
+<b>envVar</b>: Defaults to NODE_ENV.  Extend fixtures in base directory with fixtures in process.env[envVar] subdirectory.</li>
+<li>
+<p><b>dependencies</b>: Defaults to {}.  Allows you to define custom environment dependencies.  Useful if you have similar environments where one extends the other (for example staging is based on production), then you can use:</p>
+
+<p>var fixtures = new Fixtures(basedir, {dependencies: staging: "production"});</p>
+</li>
+</ul><p>And only override the required production fixtures in your staging subdirectory.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) </p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
